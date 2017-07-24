@@ -13,6 +13,12 @@ hello, world
 [![Go Report Card](https://goreportcard.com/badge/github.com/m4i/ssmenv)](https://goreportcard.com/report/github.com/m4i/ssmenv)
 [![codecov](https://codecov.io/gh/m4i/ssmenv/branch/master/graph/badge.svg)](https://codecov.io/gh/m4i/ssmenv)
 
+
+## Install
+
+Download a binary from [release page](https://github.com/m4i/ssmenv/releases) and place it in $PATH directory.
+
+
 ## Usage
 
 ```
