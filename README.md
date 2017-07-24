@@ -102,4 +102,4 @@ PUT /Prod/DB_PASS@=****************
 DELETE /Prod/DBPASS
 ```
 
-Other examples are in [main_test.go](https://github.com/m4i/ssmenv/blob/master/main_test.go).
+Other examples are in [cli_test.go](https://github.com/m4i/ssmenv/blob/master/cli_test.go).
