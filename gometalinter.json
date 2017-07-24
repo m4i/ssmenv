@@ -1,0 +1,38 @@
+{
+  "Enable": [
+    "aligncheck",
+    "deadcode",
+    "dupl",
+    "errcheck",
+    "gas",
+    "goconst",
+    "gocyclo",
+    "gofmt",
+    "goimports",
+    "golint",
+    "gotype",
+    "ineffassign",
+    "interfacer",
+    "lll",
+    "megacheck",
+    "misspell",
+    "structcheck",
+    "unconvert",
+    "unparam",
+    "varcheck",
+    "vet",
+    "vetshadow"
+  ],
+  "Disable": [
+    "gosimple",
+    "safesql",
+    "staticcheck",
+    "test",
+    "testify",
+    "unused"
+  ],
+  "Deadline": "5m",
+  "LineLength": 120,
+  "MinConfidence": 0.3,
+  "Vendor": true
+}

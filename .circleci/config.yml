@@ -1,0 +1,43 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: golang:1
+
+    working_directory: /go/src/github.com/m4i/ssmenv
+
+    steps:
+      # $CIRCLE_BUILD_NUM is empty when running locally
+      - run: test -n "$CIRCLE_BUILD_NUM" || echo LOCAL=1 >> $CIRCLE_ENV
+
+      - run: go version
+
+      - checkout
+
+      - run: test -z "$LOCAL" || ! test -e .envrc || grep ^export .envrc >> $CIRCLE_ENV
+
+      - restore_cache:
+          key: deps-{{ checksum "Gopkg.lock" }}
+      - run: test -e vendor || make deps
+      - save_cache:
+          key: deps-{{ checksum "Gopkg.lock" }}
+          paths:
+            - vendor
+
+      - run: make test-go
+
+      - restore_cache:
+          key: lint-20170724
+      - run: GOPATH=/lint:$GOPATH PATH=/lint/bin:$PATH make lint
+      - save_cache:
+          key: lint-20170724
+          paths:
+            - /lint
+
+      - run: make cross-build
+
+      - run: test -n "$LOCAL" || bash <(curl -s https://codecov.io/bash)
+
+      - deploy:
+          command: test -n "$LOCAL" || make release
